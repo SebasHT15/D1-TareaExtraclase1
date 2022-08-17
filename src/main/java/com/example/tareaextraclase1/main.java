@@ -25,7 +25,6 @@ public class main extends Application {
 
         table.setEditable(true);
 
-
         stage.setScene(scene);
         stage.show();
     }
