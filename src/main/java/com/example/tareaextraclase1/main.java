@@ -1,24 +1,43 @@
 package com.example.tareaextraclase1;
 
 import javafx.application.Application;
+
 import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
+
 import javafx.fxml.FXMLLoader;
+
 import javafx.geometry.Insets;
+
 import javafx.scene.Group;
+
 import javafx.scene.Scene;
+
 import javafx.scene.control.Label;
+
 import javafx.scene.control.TableColumn;
+
 import javafx.scene.control.TableView;
+
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+
 import javafx.scene.text.Font;
+
 import javafx.stage.Stage;
+
 import com.example.tareaextraclase1.CsvReader.*;
+
+import com.example.tareaextraclase1.Estudiante.*;
+
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class main extends Application {
     private TableView table = new TableView();
-
+    private TableColumn<Estudiante, Integer> Carne;
     @Override
     public void start(Stage stage) throws IOException {
         Group group = new Group ();
@@ -54,7 +73,6 @@ public class main extends Application {
         notaPProyectos.setMinWidth(100);
         TableColumn notaFinal = new TableColumn("NotaFinal");
 
-
         table.getColumns().addAll(carne);
         table.getColumns().addAll(nombre);
         table.getColumns().addAll(correo);
@@ -81,7 +99,9 @@ public class main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void initialize (URL url, ResourceBundle rb){
+        Carne.setCellValueFactory(new PropertyValueFactory<Estudiante, Integer>("Carne"));
+    }
     public static void main(String[] args) {
         CsvReader archivo = new CsvReader();//crea el objeto
         archivo.leerArchivo("C:\\Users\\sebas\\OneDrive\\Escritorio\\TEC\\Semestre 2\\Datos 1\\excel.csv");
