@@ -1,104 +1,118 @@
 package com.example.tareaextraclase1;
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import java.nio.charset.spi.CharsetProvider;
+
 public class Estudiante {
-    private Integer Carne;
-    private String NombreyApellidos;
-    private String Correo;
-    private Integer Telefono;
-    private String Nickname;
-    private String TipoEstudiante;
-    private Float NotaPExamenes;
-    private Float NotaPQuices;
-    private Float NotaPTareas;
-    private Float NotaProyecto1;
-    private Float NotaProyecto2;
-    private Float NotaProyecto3;
-    private Float NotaFinal;
+    protected SimpleStringProperty Carne;
+    protected SimpleStringProperty NombreyApellidos;
+    protected SimpleStringProperty Correo;
+    protected SimpleIntegerProperty Telefono;
+    protected SimpleStringProperty Nickname;
+    protected SimpleStringProperty TipoEstudiante;
+    protected SimpleFloatProperty NotaPExamenes;
+    protected SimpleFloatProperty NotaPQuices;
+    protected SimpleFloatProperty NotaPTareas;
+    protected SimpleFloatProperty NotaProyecto1;
+    protected SimpleFloatProperty NotaProyecto2;
+    protected SimpleFloatProperty NotaProyecto3;
+    protected SimpleFloatProperty NotaFinal;
+
+    protected SimpleFloatProperty NotaPromedioEQT;
+
+    protected SimpleFloatProperty NotaPProyectos;
     //Estan en private porque solo esta clase puede accesarlos, esto demuestra el encapsulamiento.
-    public Estudiante (Integer Carne, String NombreyApellido, String Correo, Integer Telefono, String Nickname, String TipoEstudiante,
+    public Estudiante (String Carne, String NombreyApellido, String Correo, Integer Telefono, String Nickname, String TipoEstudiante,
                        Float NotaPExamenes, Float NotaPQuices, Float NotaPTareas, Float NotaProyecto1, Float NotaPRoyecto2,
-                       Float NotaProyecto3, Float NotaFInal) {
-        this.Carne = Carne;
+                       Float NotaProyecto3){
+        this.Carne = new SimpleStringProperty(Carne);
 
-        this.NombreyApellidos = NombreyApellido;
+        this.NombreyApellidos = new SimpleStringProperty(NombreyApellido);
 
-        this.Correo = Correo;
+        this.Correo = new SimpleStringProperty(Correo);
 
-        this.Telefono = Telefono;
+        this.Telefono = new SimpleIntegerProperty(Telefono);
 
-        this.Nickname = Nickname;
+        this.Nickname = new SimpleStringProperty(Nickname);
 
-        this.TipoEstudiante = TipoEstudiante;
+        this.TipoEstudiante = new SimpleStringProperty(TipoEstudiante);
 
-        this.NotaPExamenes = NotaPExamenes;
+        this.NotaPExamenes = new SimpleFloatProperty(NotaPExamenes);
 
-        this.NotaPQuices = NotaPQuices;
+        this.NotaPQuices = new SimpleFloatProperty(NotaPQuices);
 
-        this.NotaPTareas = NotaPTareas;
+        this.NotaPTareas = new SimpleFloatProperty(NotaPTareas);
 
-        this.NotaProyecto1 = NotaProyecto1;
+        this.NotaProyecto1 = new SimpleFloatProperty(NotaProyecto1);
 
-        this.NotaProyecto2 = NotaPRoyecto2;
+        this.NotaProyecto2 = new SimpleFloatProperty(NotaPRoyecto2);
 
-        this.NotaProyecto3 = NotaProyecto3;
+        this.NotaProyecto3 = new SimpleFloatProperty(NotaProyecto3);
 
-        this.NotaFinal = Notafinal();
+        this.NotaFinal = new SimpleFloatProperty(Notafinal());
+
+        this.NotaPromedioEQT = new SimpleFloatProperty(0);
+
+        this.NotaPProyectos = new SimpleFloatProperty(0);
     }
-    public Integer getCarne() {
-        return Carne;
+    public String getCarne() {
+        return this.Carne.get();
     }
 
     public String getNombreyApellidos() {
-        return NombreyApellidos;
+        return this.NombreyApellidos.get();
     }
 
     public String getCorreo() {
-        return Correo;
+        return this.Correo.get();
     }
 
     public Integer getTelefono() {
-        return Telefono;
+        return this.Telefono.get();
     }
 
     public String getNickname() {
-        return Nickname;
+        return this.Nickname.get();
     }
 
     public String getTipoEstudiante() {
-        return TipoEstudiante;
+        return this.TipoEstudiante.get();
     }
 
     public Float getNotaPExamene(){
-        return NotaPExamenes;
+        return this.NotaPExamenes.get();
     }
 
     public Float getNotaPQuices() {
-        return NotaPQuices;
+        return this.NotaPQuices.get();
     }
 
     public Float getNotaPTareas() {
-        return NotaPTareas;
+        return this.NotaPTareas.get();
     }
 
     public Float getNotaProyecto1() {
-        return NotaProyecto1;
+        return this.NotaProyecto1.get();
     }
 
     public Float getNotaProyecto2() {
-        return NotaProyecto2;
+        return this.NotaProyecto2.get();
     }
 
     public Float getNotaProyecto3() {
-        return NotaProyecto3;
+        return this.NotaProyecto3.get();
     }
 
     public Float getNotaFinal() {
-        return NotaFinal;
+        return this.NotaFinal.get();
     }
 
-    public float Notafinal(){
-        NotaFinal = (getNotaPExamene() + getNotaPQuices() + getNotaPTareas() + getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()/6);
-        return NotaFinal;
+    private float Notafinal(){
+        float notacalculada = (getNotaPExamene() + getNotaPQuices() + getNotaPTareas() + getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()/6);
+        return notacalculada;
     }
 
 }

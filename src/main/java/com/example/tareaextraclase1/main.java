@@ -26,7 +26,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import javafx.stage.Stage;
-
+import javafx.scene.control.cell.PropertyValueFactory;
 import com.example.tareaextraclase1.CsvReader.*;
 
 import com.example.tareaextraclase1.Estudiante.*;
@@ -38,6 +38,7 @@ import java.util.ResourceBundle;
 public class main extends Application {
     private TableView table = new TableView();
     private TableColumn<Estudiante, Integer> Carne;
+    private static ObservableList<Estudiante> data;
     @Override
     public void start(Stage stage) throws IOException {
         Group group = new Group ();
@@ -49,45 +50,50 @@ public class main extends Application {
 
         table.setEditable(true);
 
-        TableColumn carne = new TableColumn("Carne");
-        TableColumn nombre = new TableColumn("Nombre");
-        TableColumn correo = new TableColumn("Correo");
-        TableColumn telefono = new TableColumn("Telefono");
-        TableColumn nickname = new TableColumn("Nickname");
-        TableColumn tipo = new TableColumn("Tipo");
-        TableColumn notaPExamenes = new TableColumn("NotaPExamenes");
-        notaPExamenes.setMinWidth(100);
-        TableColumn notaPQuices = new TableColumn("NotaPQuices");
-        notaPQuices.setMinWidth(100);
-        TableColumn notaPTareas = new TableColumn("NotaPTareas");
-        notaPTareas.setMinWidth(100);
-        TableColumn notaProyecto1= new TableColumn("NotaProyecto1");
-        notaProyecto1.setMinWidth(100);
-        TableColumn notaProyecto2 = new TableColumn("NotaProyecto2");
-        notaProyecto2.setMinWidth(100);
-        TableColumn notaProyecto3 = new TableColumn("NotaProyecto3");
-        notaProyecto3.setMinWidth(100);
-        TableColumn notaPromedioEQT = new TableColumn("NotaPromedioEQT");
-        notaPromedioEQT.setMinWidth(130);
-        TableColumn notaPProyectos= new TableColumn("NotaPProyectos");
-        notaPProyectos.setMinWidth(100);
-        TableColumn notaFinal = new TableColumn("NotaFinal");
+        TableColumn carnecolumn = new TableColumn("Carne");
+            carnecolumn.setCellValueFactory(new PropertyValueFactory<>("Carne"));
+        TableColumn nombrecolumn = new TableColumn("Nombre");
+            nombrecolumn.setCellValueFactory(new PropertyValueFactory<>("NombreyApellidos"));
+        TableColumn correocolumn = new TableColumn("Correo");
+            correocolumn.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        TableColumn telefonocolumn = new TableColumn("Telefono");
+            telefonocolumn.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        TableColumn nicknamecolumn = new TableColumn("Nickname");
+            nicknamecolumn.setCellValueFactory(new PropertyValueFactory<>("Nickname"));
+        TableColumn tipocolumn = new TableColumn("Tipo");
+            tipocolumn.setCellValueFactory(new PropertyValueFactory<>("TipoEstudiante"));
+        TableColumn notaPExamenescolumn = new TableColumn("NotaPExamenes");
+            notaPExamenescolumn.setCellValueFactory(new PropertyValueFactory<>("NotaPExamenes"));
+        notaPExamenescolumn.setMinWidth(100);
+        TableColumn notaPQuicescolumn = new TableColumn("NotaPQuices");
+            notaPQuicescolumn.setCellValueFactory(new PropertyValueFactory<>("NotaPQuices"));
+        notaPQuicescolumn.setMinWidth(100);
+        TableColumn notaPTareascolumn = new TableColumn("NotaPTareas");
+            notaPTareascolumn.setCellValueFactory(new PropertyValueFactory<>("NotaPTareas"));
+        notaPTareascolumn.setMinWidth(100);
+        TableColumn notaProyecto1column= new TableColumn("NotaProyecto1");
+            notaProyecto1column.setCellValueFactory(new PropertyValueFactory<>("NotaProyecto1"));
+        notaProyecto1column.setMinWidth(100);
+        TableColumn notaProyecto2column = new TableColumn("NotaProyecto2");
+            notaProyecto2column.setCellValueFactory(new PropertyValueFactory<>("NotaProyecto2"));
+        notaProyecto2column.setMinWidth(100);
+        TableColumn notaProyecto3column = new TableColumn("NotaProyecto3");
+            notaProyecto3column.setCellValueFactory(new PropertyValueFactory<>("NotaProyecto3"));
+        notaProyecto3column.setMinWidth(100);
+        TableColumn notaPromedioEQTcolumn = new TableColumn("NotaPromedioEQT");
+            notaPromedioEQTcolumn.setCellValueFactory(new PropertyValueFactory<>("NotaPromedioEQT"));
+        notaPromedioEQTcolumn.setMinWidth(130);
+        TableColumn notaPProyectoscolumn= new TableColumn("NotaPProyectos");
+            notaPProyectoscolumn.setCellValueFactory(new PropertyValueFactory<>("NotaPProyectos"));
+        notaPProyectoscolumn.setMinWidth(100);
+        TableColumn notaFinalcolumn = new TableColumn("NotaFinal");
+            notaFinalcolumn.setCellValueFactory(new PropertyValueFactory<>("NotaFinal"));
 
-        table.getColumns().addAll(carne);
-        table.getColumns().addAll(nombre);
-        table.getColumns().addAll(correo);
-        table.getColumns().addAll(telefono);
-        table.getColumns().addAll(nickname);
-        table.getColumns().addAll(tipo);
-        table.getColumns().addAll(notaPExamenes);
-        table.getColumns().addAll(notaPQuices);
-        table.getColumns().addAll(notaPTareas);
-        table.getColumns().addAll(notaProyecto1);
-        table.getColumns().addAll(notaProyecto2);
-        table.getColumns().addAll(notaProyecto3);
-        table.getColumns().addAll(notaPromedioEQT);
-        table.getColumns().addAll(notaPProyectos);
-        table.getColumns().addAll(notaFinal);
+        table.getColumns().addAll(carnecolumn, nombrecolumn, correocolumn, telefonocolumn, nicknamecolumn, tipocolumn, notaPExamenescolumn, notaPQuicescolumn,
+                notaPTareascolumn, notaProyecto1column, notaProyecto2column, notaProyecto3column, notaPromedioEQTcolumn, notaPProyectoscolumn, notaFinalcolumn );
+
+        table.setItems(data);
+
 
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
@@ -99,12 +105,10 @@ public class main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public void initialize (URL url, ResourceBundle rb){
-        Carne.setCellValueFactory(new PropertyValueFactory<Estudiante, Integer>("Carne"));
-    }
     public static void main(String[] args) {
         CsvReader archivo = new CsvReader();//crea el objeto
         archivo.leerArchivo("C:\\Users\\sebas\\OneDrive\\Escritorio\\TEC\\Semestre 2\\Datos 1\\excel.csv");
+        data = archivo.getlistaestudiantes();
         launch();
     }
 }
