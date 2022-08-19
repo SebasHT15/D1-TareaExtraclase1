@@ -82,7 +82,7 @@ public class Estudiante {
         return this.TipoEstudiante.get();
     }
 
-    public Float getNotaPExamene(){
+    public Float getNotaPExamenes(){
         return this.NotaPExamenes.get();
     }
 
@@ -106,12 +106,19 @@ public class Estudiante {
         return this.NotaProyecto3.get();
     }
 
-    public Float getNotaFinal() {
-        return this.NotaFinal.get();
+    public Float getNotaPromedioEQT() {
+        return this.NotaPromedioEQT.get();
     }
 
+    public Float getNotaPProyectos() {
+        return this.NotaPProyectos.get();
+    }
+
+    public Float getNotaFinal()  {
+        return this.NotaFinal.get();
+    }
     private float Notafinal(){
-        float notacalculada = (getNotaPExamene() + getNotaPQuices() + getNotaPTareas() + getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()/6);
+        float notacalculada = (getNotaPExamenes() + getNotaPQuices() + getNotaPTareas() + getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()/6);
         return notacalculada;
     }
 

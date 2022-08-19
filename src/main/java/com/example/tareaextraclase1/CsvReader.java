@@ -35,12 +35,12 @@ public class CsvReader {
     }
     private void crearEstudiante(String[] datos){
         if (datos[5] == "A"){
-            listaestudiantes.add(new EstudianteA(datos[0], datos[1], datos[2], Integer.parseInt(datos[3]), datos[4], datos[5],
+            listaestudiantes.add(new EstudianteB(datos[0], datos[1], datos[2], Integer.parseInt(datos[3]), datos[4], datos[5],
                     Float.parseFloat(datos[6]), Float.parseFloat(datos[7]), Float.parseFloat(datos[8]), Float.parseFloat(datos[9]), Float.parseFloat(datos[10]),
                     Float.parseFloat(datos[11])));
         }
         else {
-            listaestudiantes.add(new EstudianteB(datos[0], datos[1], datos[2], Integer.parseInt(datos[3]), datos[4], datos[5],
+            listaestudiantes.add(new EstudianteA(datos[0], datos[1], datos[2], Integer.parseInt(datos[3]), datos[4], datos[5],
                     Float.parseFloat(datos[6]), Float.parseFloat(datos[7]), Float.parseFloat(datos[8]), Float.parseFloat(datos[9]), Float.parseFloat(datos[10]),
                     Float.parseFloat(datos[11])));
         }

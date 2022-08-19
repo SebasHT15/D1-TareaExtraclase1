@@ -14,7 +14,7 @@ public class EstudianteA extends Estudiante{
         this.NotaPromedioEQT = new SimpleFloatProperty(Notapromedioeqt());
     }
     public float Notapromedioeqt() {
-        float notacalculada = (getNotaPExamene() + getNotaPQuices() + getNotaPTareas())/3;
+        float notacalculada = (getNotaPExamenes() + getNotaPQuices() + getNotaPTareas())/3;
             return notacalculada;
     }
 }
