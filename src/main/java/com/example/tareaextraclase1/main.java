@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class main extends Application {
+public class main extends Application {// la clase main contiene el diseño de la table view e inicializa el programa.
     private TableView table = new TableView();
     private TableColumn<Estudiante, Integer> Carne;
     private static ObservableList<Estudiante> data;
@@ -48,7 +48,7 @@ public class main extends Application {
         final Label label = new Label ("Tabla de estudiantes");
         label.setFont(new Font("Times New Roman", 20));
 
-        table.setEditable(true);
+        table.setEditable(true); //Se utilizo setcellvaluefactory porque de otra manera no mostraba los datos.
 
         TableColumn carnecolumn = new TableColumn("Carne");
             carnecolumn.setCellValueFactory(new PropertyValueFactory<>("Carne"));
@@ -92,7 +92,7 @@ public class main extends Application {
         table.getColumns().addAll(carnecolumn, nombrecolumn, correocolumn, telefonocolumn, nicknamecolumn, tipocolumn, notaPExamenescolumn, notaPQuicescolumn,
                 notaPTareascolumn, notaProyecto1column, notaProyecto2column, notaProyecto3column, notaPromedioEQTcolumn, notaPProyectoscolumn, notaFinalcolumn );
 
-        table.setItems(data);
+        table.setItems(data);//data es igual a la lista que es observable que se creo en la clase CsvReader.
 
 
         final VBox vbox = new VBox();

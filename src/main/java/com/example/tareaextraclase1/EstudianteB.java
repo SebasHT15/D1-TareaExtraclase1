@@ -11,9 +11,9 @@ public class EstudianteB extends Estudiante{
                 NotaPExamenes, NotaPQuices, NotaPTareas, NotaProyecto1, NotaPRoyecto2,
                 NotaProyecto3);
         //Se le indica que ya estan inicializados.
-        this.NotaPProyectos = new SimpleFloatProperty(Notapproyectos());
+        this.NotaPProyectos = new SimpleFloatProperty(Notapproyectos());//Nota pproyectos sirve como ejemplo de instancia ya que se deriva de otros objetos por medio de una operacion.
     }
-    public float Notapproyectos() {
+    public float Notapproyectos() {//Calcula la nota promedio de proyectos.
         float notacalculada = (getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()) / 3;
         return notacalculada;
     }

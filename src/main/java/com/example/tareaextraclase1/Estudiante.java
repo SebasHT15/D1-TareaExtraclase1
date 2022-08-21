@@ -6,8 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.nio.charset.spi.CharsetProvider;
 
-public class Estudiante {
-    protected SimpleStringProperty Carne;
+public class Estudiante {//Se tuvo que cambiar a Simple-string,float,int-property para poder operar los datos y mostrarlos en pantalla. Tambien esta nos puede servir como ejemplo de clase, aunque el programa presenta diferentes clases con funciones distintas.
+    //En la parte de abstraccion, la clase padre estudiante crea todos los objetos y metodos que van a ocupar las clases hijas, pero no hace operaciones especificas como las de promedios de eqt y proyectos.
+    protected SimpleStringProperty Carne;//Se pusieron protected para que las clases hijas puedan operar y accesarlos.
     protected SimpleStringProperty NombreyApellidos;
     protected SimpleStringProperty Correo;
     protected SimpleIntegerProperty Telefono;
@@ -116,10 +117,10 @@ public class Estudiante {
 
     public Float getNotaFinal()  {
         return this.NotaFinal.get();
-    }
-    private float Notafinal(){
+    }//Este objeto va a tener atributos diferentes al resto, ya que proviene de una operacion, en cambio los demas ya son datos especificos.
+    private float Notafinal(){//calcula la nota final, tambien sirve como ejemplo de metodo que realiza una operacion en la clase estudiante.
         float notacalculada = (getNotaPExamenes() + getNotaPQuices() + getNotaPTareas() + getNotaProyecto1() + getNotaProyecto2() + getNotaProyecto3()/6);
         return notacalculada;
     }
-
+//Para la parte de polimorfismo las tres clases de estudiante son diferentes, pero tienen metodos y atributos identicos pero que al final de cuentas se comportan diferente cada una.
 }
